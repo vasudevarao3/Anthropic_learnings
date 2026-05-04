@@ -12,6 +12,8 @@ docs = {
     "spec.txt": "These specifications define the technical requirements for the equipment.",
 }
 
+# -------------- Tools ---------------- 
+
 # TODO: Write a tool to read a doc
 @mcp.tool(
     name = "read_doc_contents",
@@ -40,6 +42,57 @@ def edit_document(
     docs[doc_id] = docs[doc_id].replace(old_str, new_str) 
 
 
+@mcp.tool(
+    name="create_document",
+    description="Create a new document with the given id and content"
+)
+def create_document(
+    doc_id: str = Field(description="Unique id for the new document (e.g. 'notes.md')"),
+    content: str = Field(description="Initial text content of the document")
+) -> str:
+    if doc_id in docs:
+        raise ValueError(f"Document '{doc_id}' already exists. Use edit_document to modify it.")
+    docs[doc_id] = content
+    return f"Document '{doc_id}' created successfully."
+
+
+@mcp.tool(
+    name="delete_document",
+    description="Permanently delete a document by its id"
+)
+def delete_document(
+    doc_id: str = Field(description="Id of the document to delete")
+) -> str:
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id '{doc_id}' not found")
+    del docs[doc_id]
+    return f"Document '{doc_id}' deleted successfully."
+
+
+@mcp.tool(
+    name="search_documents",
+    description="Search all documents for a given query string and return matching doc ids with snippets"
+)
+def search_documents(
+    query: str = Field(description="The text string to search for across all documents")
+) -> list[dict]:
+    query_lower = query.lower()
+    results = []
+    for doc_id, content in docs.items():
+        if query_lower in content.lower():
+            # Return a small snippet around the first match
+            idx = content.lower().index(query_lower)
+            start = max(0, idx - 40)
+            end = min(len(content), idx + len(query) + 40)
+            snippet = ("..." if start > 0 else "") + content[start:end] + ("..." if end < len(content) else "")
+            results.append({"doc_id": doc_id, "snippet": snippet})
+    return results if results else [{"message": f"No documents found containing '{query}'"}]
+
+
+
+# -------------- Resources ----------------
+
+# TODO: Write a resource to return all doc id's
 @mcp.resource(
     "docs://documents",
     mime_type = "application/json"
@@ -48,6 +101,7 @@ def list_docs() -> list[str]:
     return list(docs.keys())
 
 
+# TODO: Write a resource to return the contents of a particular doc
 @mcp.resource(
     "docs://documents/{doc_id}",
     mime_type = "text/plain"
@@ -56,10 +110,10 @@ def fetch_doc(doc_id: str) -> str:
     if doc_id not in docs:
         raise ValueError(f"Doc with id {doc_id} not found") 
     return docs[doc_id] 
- 
 
-# TODO: Write a resource to return all doc id's
-# TODO: Write a resource to return the contents of a particular doc
+
+
+
 # TODO: Write a prompt to rewrite a doc in markdown format
 # TODO: Write a prompt to summarize a doc 
 
