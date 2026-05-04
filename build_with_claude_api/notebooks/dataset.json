@@ -1,11 +1,14 @@
 [
   {
-    "task": "Write a Python function that parses an AWS ARN string and returns a dictionary containing the partition, service, region, account-id, and resource components."
+    "task": "Create an IAM policy JSON that grants read-only access to S3 buckets with names starting with 'logs-' and allows listing all buckets",
+    "format": "json"
   },
   {
-    "task": "Create a JSON object for an AWS IAM policy that allows read-only access to a specific S3 bucket named 'my-data-bucket' for objects with the prefix 'reports/'."
+    "task": "Write a Python function that takes an AWS ARN string and extracts the service name, region, account ID, and resource type as a dictionary",
+    "format": "python"
   },
   {
-    "task": "Write a regular expression that validates AWS EC2 instance IDs, which start with 'i-' followed by either 8 or 17 hexadecimal characters (e.g., i-1234abcd or i-0123456789abcdef0)."
+    "task": "Write a regex pattern that validates EC2 instance IDs (format: i- followed by 8 or 17 hexadecimal characters, like i-1234abcd or i-0123456789abcdef0)",
+    "format": "regex"
   }
 ]
