@@ -40,6 +40,24 @@ def edit_document(
     docs[doc_id] = docs[doc_id].replace(old_str, new_str) 
 
 
+@mcp.resource(
+    "docs://documents",
+    mime_type = "application/json"
+)
+def list_docs() -> list[str]:
+    return list(docs.keys())
+
+
+@mcp.resource(
+    "docs://documents/{doc_id}",
+    mime_type = "text/plain"
+)
+def fetch_doc(doc_id: str) -> str:
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id {doc_id} not found") 
+    return docs[doc_id] 
+ 
+
 # TODO: Write a resource to return all doc id's
 # TODO: Write a resource to return the contents of a particular doc
 # TODO: Write a prompt to rewrite a doc in markdown format
@@ -48,3 +66,10 @@ def edit_document(
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
+
+
+
+
+# server - uv run mcp_server.py
+# Inspector - mcp dev mcp_server.py
+# Both at once - uv run mcp dev mcp_server.py 
