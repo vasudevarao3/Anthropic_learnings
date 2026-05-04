@@ -1,14 +1,17 @@
 [
   {
-    "task": "Create an IAM policy JSON that grants read-only access to S3 buckets with names starting with 'logs-' and allows listing all buckets",
-    "format": "json"
+    "task": "Create an IAM policy that allows read-only access to a specific S3 bucket named 'company-logs-2024' and all objects within it",
+    "format": "json",
+    "solution_criteria": "Policy must include s3:GetObject and s3:ListBucket actions, specify the correct bucket ARN in Resource field, and follow proper IAM policy JSON structure with Version and Statement elements"
   },
   {
-    "task": "Write a Python function that takes an AWS ARN string and extracts the service name, region, account ID, and resource type as a dictionary",
-    "format": "python"
+    "task": "Write a Python function that takes a list of EC2 instance dictionaries (with 'InstanceId' and 'State' keys) and returns only the instance IDs of instances in 'running' state",
+    "format": "python",
+    "solution_criteria": "Function should filter instances by State=='running', extract InstanceId values, return a list of strings, and handle empty input gracefully"
   },
   {
-    "task": "Write a regex pattern that validates EC2 instance IDs (format: i- followed by 8 or 17 hexadecimal characters, like i-1234abcd or i-0123456789abcdef0)",
-    "format": "regex"
+    "task": "Write a regular expression that validates AWS ARN format for S3 buckets (e.g., arn:aws:s3:::bucket-name or arn:aws:s3:::bucket-name/key)",
+    "format": "regex",
+    "solution_criteria": "Regex must match the pattern 'arn:aws:s3:::' followed by a valid bucket name (lowercase, numbers, hyphens), optionally followed by '/' and object key path, and reject invalid characters or formats"
   }
 ]
