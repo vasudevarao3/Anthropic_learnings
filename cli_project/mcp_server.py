@@ -137,8 +137,25 @@ def format_document(
     return [base.UserMessage(prompt)] 
 
 
-
 # TODO: Write a prompt to summarize a doc 
+@mcp.prompt(
+    name="summarize_document",
+    description="Generate a prompt that asks the LLM to produce a concise summary of a document"
+)
+def summarize_document_prompt(
+    doc_id: str = Field(description="Id of the document to summarize"),
+    max_sentences: int = Field(default=3, description="Maximum number of sentences in the summary")
+) -> list[base.UserMessage]:
+    if doc_id not in docs:
+        raise ValueError(f"Doc with id '{doc_id}' not found")
+    content = docs[doc_id]
+    prompt = f"""
+        Please provide a concise summary of the following document in no more than {max_sentences} sentence(s). 
+        Focus on the key points and main purpose of the document.\n\n
+        Document ID: {doc_id}\n\n
+        Content:\n{content}
+    """
+    return [base.UserMessage(prompt)] 
 
 
 if __name__ == "__main__":
