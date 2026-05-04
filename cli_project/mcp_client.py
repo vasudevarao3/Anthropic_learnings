@@ -43,13 +43,14 @@ class MCPClient:
 
     async def list_tools(self) -> list[types.Tool]:
         # TODO: Return a list of tools defined by the MCP server
-        return []
+        result = await self.session().list_tools() 
+        return result.tools 
 
     async def call_tool(
         self, tool_name: str, tool_input: dict
     ) -> types.CallToolResult | None:
         # TODO: Call a particular tool and return the result
-        return None
+        return await self.session().call_tool(tool_name, tool_input) 
 
     async def list_prompts(self) -> list[types.Prompt]:
         # TODO: Return a list of prompts defined by the MCP server
@@ -82,7 +83,9 @@ async def main():
         command="uv",
         args=["run", "mcp_server.py"],
     ) as _client:
-        pass
+        # pass
+        result = await _client.list_tools()     # [Tool(name='read_doc_contents', title=None, description='Read the contents of a document and return it as a string', inputSchema={'properties': {'doc_id': {'description': 'Id of the document to read', 'title': 'Doc Id', 'type': 'string'}}, 'required': ['doc_id'], 'title': 'read_documentArguments', 'type': 'object'}, outputSchema=None, icons=None, annotations=None, meta=None, execution=None), Tool(name='edit_document', title=None, description='Edit a document by replacing a string in the documents content with a new string', inputSchema={'properties': {'doc_id': {'description': 'Id of the document that will be edited', 'title': 'Doc Id', 'type': 'string'}, 'old_str': {'description': 'The text to replace. Must match exactly, including whitespace', 'title': 'Old Str', 'type': 'string'}, 'new_str': {'description': 'The new text to insert in place of the old test', 'title': 'New Str', 'type': 'string'}}, 'required': ['doc_id', 'old_str', 'new_str'], 'title': 'edit_documentArguments', 'type': 'object'}, outputSchema=None, icons=None, annotations=None, meta=None, execution=None)]
+        print(result) 
 
 
 if __name__ == "__main__":
