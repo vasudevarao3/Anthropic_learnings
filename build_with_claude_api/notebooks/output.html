@@ -1,0 +1,458 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">4.0 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">0.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a high-endurance athlete (marathon runner) requiring 3500+ calories with emphasis on carbohydrate loading and hydration timing</td>
+                <td class="prompt-inputs"><strong>height:</strong> 180 cm<br><strong>weight:</strong> 68 kg<br><strong>goal:</strong> Marathon training - high-endurance athlete requiring 3500+ calories with carbohydrate loading and strategic hydration<br><strong>restrictions:</strong> None</td>
+                <td class="criteria">• Meal plan totals 3500+ calories distributed across breakfast, lunch, dinner, and snacks<br>• Carbohydrates comprise 55-65% of total calories with emphasis on complex carbs for sustained energy<br>• Hydration timing specified around training/meals with clear fluid intake recommendations<br>• Plan is compact and presented in a single-day format with meal times</td>
+                <td class="output"><pre># Nutrition Plan for Marathon Training
+
+## Daily Calorie Target: 3500-4000 calories
+
+### Macronutrient Breakdown
+- **Carbohydrates**: 55-60% (480-600g) — fuel for endurance
+- **Protein**: 15-20% (130-175g) — muscle recovery
+- **Fat**: 20-25% (78-111g) — sustained energy
+
+---
+
+## Sample Daily Meal Plan
+
+### Breakfast (700 cal)
+- Oatmeal (80g) with banana, honey, and almond butter
+- Greek yogurt (150g)
+- Orange juice (250ml)
+
+### Mid-Morning Snack (300 cal)
+- Bagel with jam
+- Apple with peanut butter
+
+### Lunch (900 cal)
+- Pasta (150g cooked) with lean chicken (150g) and olive oil sauce
+- Mixed vegetables
+- Whole grain bread
+- Sports drink (500ml)
+
+### Pre-Workout Snack (200 cal)
+- Rice cakes with honey or sports bar
+- Water (500ml)
+
+### Dinner (900 cal)
+- Salmon (150g) or lean beef (150g)
+- Rice (150g cooked)
+- Sweet potato
+- Vegetables with olive oil
+
+### Evening Snack (200 cal)
+- Chocolate milk or protein smoothie
+
+---
+
+## Hydration Strategy
+- **Daily**: 3-4 liters minimum
+- **During long runs (90+ min)**: 6-8% carb drink (30-60g carbs/hour)
+- **Post-run**: Rehydrate 150% of fluid lost within 4 hours
+
+### Key Timing
+- Carb-load 3 days before race
+- Eat 2-3 hours before runs
+- Recovery meal within 30 minutes post-run
+
+Would you like specific meal ideas or guidance on race-day nutrition?</pre></td>
+                <td class="score-col"><span class="score score-low">5</span></td>
+                <td class="reasoning">The solution demonstrates strong structure and addresses most criteria effectively, including hydration timing, macronutrient percentages, and meal timing. However, it contains a critical deficiency: the calculated total calories (3200) fall approximately 300 calories short of the stated 3500+ calorie requirement. While the solution includes all mandatory components (daily total stated, macronutrient breakdown, meals with portions and timing), the actual meal plan does not deliver the promised caloric intake. This is a significant gap that violates the core requirement of meeting 3500+ calories. The vagueness in some portion descriptions is a secondary issue but compounds the calorie shortfall.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a strength/power athlete (weightlifter) needing protein-focused meals with specific pre/post-workout nutrition around training schedule</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178 cm<br><strong>weight:</strong> 82 kg<br><strong>goal:</strong> Maximize strength and muscle gain for weightlifting competition in 8 weeks<br><strong>restrictions:</strong> Lactose intolerant, no shellfish</td>
+                <td class="criteria">• Meal plan covers one full day with breakfast, lunch, dinner, and pre/post-workout meals<br>• Each meal specifies protein content with minimum 25g protein per main meal and 15-20g for snacks<br>• Includes pre-workout meal (1-2 hours before training) and post-workout meal (within 30 minutes after) with appropriate macros<br>• All meals respect dietary restrictions (no dairy, no shellfish)</td>
+                <td class="output"><pre># Nutrition Plan for Strength & Muscle Gain (8 weeks)
+
+## Caloric Needs
+- **Daily target: ~2,800-3,000 calories** (slight surplus for muscle gain)
+- **Protein: 165-180g/day** (~2g per kg bodyweight)
+- **Carbs: 350-400g/day** (fuel for training)
+- **Fats: 75-90g/day** (hormone support)
+
+## Protein Sources (Lactose-Free)
+- Chicken, turkey, lean beef
+- Fish (salmon, cod, tuna)
+- Eggs & egg whites
+- Greek yogurt (lactose-free versions)
+- Protein powder (whey isolate or plant-based)
+- Legumes (beans, lentils)
+
+## Carb Sources
+- Oats, rice, quinoa
+- Sweet potatoes, regular potatoes
+- Whole grain bread/pasta
+- Fruits (bananas, berries)
+- Vegetables (broccoli, spinach)
+
+## Healthy Fats
+- Olive oil, avocado oil
+- Nuts & seeds (almonds, chia)
+- Fatty fish (omega-3s)
+- Avocados
+
+## Sample Daily Meal Structure
+1. **Breakfast**: Eggs + oats + berries
+2. **Snack**: Banana + almond butter
+3. **Lunch**: Grilled chicken + rice + vegetables
+4. **Pre-workout**: Rice cakes + honey
+5. **Post-workout**: Protein shake (isolate) + carbs
+6. **Dinner**: Salmon + sweet potato + greens
+
+## Key Tips
+- Hydrate well (3-4L daily)
+- Time carbs around training
+- Track intake for 2 weeks to dial in
+
+Would you like specific meal ideas or adjustments?</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">The solution provides excellent general nutritional guidance and correctly addresses the athlete's needs and restrictions. However, it fundamentally fails to deliver what was requested: a compact, concise 1-day meal plan. The mandatory requirements explicitly demand 'exact foods, portions, and timing' with 'daily caloric total' and 'macronutrient breakdown' for the actual meals. The solution instead offers a template and food categories without executing a complete meal plan. This is a structural failure to meet the core deliverable, despite the quality of the supporting information provided.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a sport-specific dietary restriction (vegan gymnast) to verify meal plan accommodates both athletic performance needs and ethical constraints</td>
+                <td class="prompt-inputs"><strong>height:</strong> 168<br><strong>weight:</strong> 62<br><strong>goal:</strong> High-performance training for competitive gymnastics<br><strong>restrictions:</strong> Vegan (no animal products)</td>
+                <td class="criteria">• Meal plan is compact and covers one full day with 3+ meals<br>• All foods are vegan-compliant with no animal products<br>• Includes adequate protein (minimum 1.6g per kg body weight) for athletic recovery<br>• Provides balanced macronutrients supporting gymnastics performance and energy demands</td>
+                <td class="output"><pre># Nutrition Plan for Competitive Vegan Gymnast
+
+## Caloric & Macronutrient Overview
+- **BMI**: 22 (healthy range)
+- **Daily calories**: ~2,400-2,800 (adjust based on training intensity)
+- **Protein**: 1.6-2.0g per kg = **100-124g daily** (critical for recovery)
+- **Carbs**: 6-10g per kg = **372-620g daily** (fuel for performance)
+- **Fats**: 20-35% of calories = **53-109g daily**
+
+## High-Protein Vegan Foods (Priority)
+
+**Legumes & Pulses:**
+- Lentils, chickpeas, black beans, edamame
+- Tofu, tempeh, textured vegetable protein (TVP)
+
+**Grains & Seeds:**
+- Quinoa, buckwheat, hemp seeds, chia seeds
+- Whole grain bread, oats
+
+**Nuts & Nut Butters:**
+- Peanut butter, almond butter, tahini
+- Mixed nuts and seeds
+
+**Fortified Options:**
+- Nutritional yeast, plant-based protein powder
+
+## Sample Daily Structure
+
+| Meal | Examples |
+|------|----------|
+| **Breakfast** | Oatmeal + hemp seeds + banana + almond butter |
+| **Snack 1** | Hummus + vegetables + whole grain crackers |
+| **Lunch** | Quinoa bowl + lentils + roasted vegetables + tahini |
+| **Snack 2** | Protein smoothie (plant milk + powder + berries) |
+| **Dinner** | Tofu stir-fry + brown rice + edamame |
+
+## Key Supplements to Consider
+- **B12** (essential when vegan)
+- **Vitamin D**
+- **Iron** (monitor levels)
+- **Omega-3s** (algae-based)
+
+**Consult a sports dietitian** for personalized periodization around competition and training cycles.</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">While the solution demonstrates strong nutritional knowledge and correctly addresses the secondary criteria (vegan compliance, adequate protein, balanced macronutrients for gymnastics), it fundamentally fails to meet all three mandatory requirements. The task explicitly demands: (1) daily caloric total (not a range), (2) macronutrient breakdown (specific grams, not ranges), and (3) meals with exact foods, portions, and timing. The solution provides none of these with the required specificity. It reads as a general nutritional guide rather than a concrete 1-day meal plan. This is an automatic failure per the mandatory requirements clause.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with an early morning competition scenario (6 AM start time) requiring breakfast timing, pre-competition nutrition, and recovery meals condensed into available hours</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178 cm<br><strong>weight:</strong> 75 kg<br><strong>goal:</strong> Peak performance for 6 AM swimming competition with energy management across limited timeframe<br><strong>restrictions:</strong> Lactose intolerant</td>
+                <td class="criteria">• Meal plan includes breakfast (3+ hours before 6 AM competition), pre-competition snack (30-60 min before), and post-competition recovery meal<br>• All meals and snacks are lactose-free and appropriate for athletic performance<br>• Plan is compact and fits within a single day with realistic timing constraints for early morning competition</td>
+                <td class="output"><pre># Pre-Competition Nutrition Plan (6 AM Swimming)
+
+## Timing & Strategy
+**Goal:** Fuel without GI distress, maximize energy availability, respect lactose intolerance
+
+---
+
+## **Evening Before (Day Prior)**
+- Normal balanced dinner 3+ hours before bed
+- Hydrate well throughout day
+- Avoid excessive fiber, fat, or unfamiliar foods
+
+---
+
+## **Morning of Competition**
+
+### **2.5-3 hours before (3-3:30 AM)**
+**Main fuel meal** (~400-500 kcal, easily digestible):
+- **Bagel or toast** (50-70g carbs) with honey or jam
+- **Banana** (additional carbs, potassium)
+- **Nut butter** (2 tbsp) OR egg whites (protein, sustained energy)
+- **Water** (16 oz)
+
+*Why:* Ample time for digestion; high carb-to-protein ratio for quick energy
+
+---
+
+### **30-60 minutes before (5-5:30 AM)**
+**Quick top-up** (~100-150 kcal):
+- **Sports drink** (6-8 oz) OR diluted juice
+- **Energy gel** OR dates
+- **Sip of water**
+
+*Why:* Fast-acting carbs; minimal fullness; maintains blood glucose
+
+---
+
+## **Lactose-Free Swaps**
+❌ Avoid: yogurt, milk, cheese, cream  
+✅ Use: 
+- Almond/oat milk (if needed for beverages)
+- Honey, maple syrup, jam
+- Lactose-free protein (plant-based or egg)
+
+---
+
+## **Hydration Protocol**
+- **Night before:** 500-750 mL extra
+- **Morning:** 500 mL by 3:30 AM, then small sips until race start
+- **Post-competition:** 150% of fluid lost over 4-6 hours
+
+---
+
+## **Quick Meal Options**
+
+| Timing | Option A | Option B | Option C |
+|--------|----------|----------|----------|
+| **3 AM** | Toast + honey + banana | Bagel + nut butter | Rice cakes + jam + egg white |
+| **5 AM** | Sports drink + dates | Diluted juice + energy gel | Applesauce pouch |
+
+---
+
+## **Key Principles for This Athlete**
+✓ **High carbs** (60-70g total) for glycogen  
+✓ **Moderate protein** (15-20g) for satiety  
+✓ **Low fiber & fat** (avoid GI stress)  
+✓ **Tested foods only** (no new items race morning)  
+✓ **Zero dairy** throughout  
+
+**Adjust portions based on appetite and tolerance.** Eat conservatively rather than too much.</pre></td>
+                <td class="score-col"><span class="score score-low">3</span></td>
+                <td class="reasoning">The solution demonstrates strong understanding of pre-competition nutrition timing, lactose-free requirements, and athletic performance principles. However, it fails to meet three MANDATORY requirements: (1) no daily caloric total is provided, (2) no macronutrient breakdown is included, and (3) critically, there is NO post-competition recovery meal despite the criteria explicitly requiring 'breakfast, pre-competition snack, AND post-competition recovery meal.' The solution only addresses the first two components. While the pre-competition guidance is excellent and lactose-free compliance is thorough, the absence of these mandatory elements results in automatic failure per the scoring guidelines.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with minimal equipment/budget constraints (athlete with limited kitchen access or financial resources) to ensure practicality and achievability of recommendations</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178 cm<br><strong>weight:</strong> 72 kg<br><strong>goal:</strong> Build muscle and improve endurance for mixed sport training<br><strong>restrictions:</strong> No oven access, no refrigerator, budget under $15 USD for the day, vegetarian</td>
+                <td class="criteria">• All meals use only stovetop or no-cook preparation methods<br>• Total daily cost does not exceed $15 USD<br>• Provides adequate protein and calories for athlete's muscle-building goal<br>• All foods are shelf-stable or require minimal refrigeration</td>
+                <td class="output"><pre># Daily Meal Plan (~$12-15 USD, Vegetarian, No Oven/Fridge)
+
+## Nutritional Target
+- **Calories**: ~2,400-2,600
+- **Protein**: 120-140g (critical for muscle building)
+- **Carbs**: 300-350g (endurance fuel)
+
+---
+
+## Sample Day
+
+### Breakfast (~7am)
+- **2 cups cooked oats** ($0.80) + banana ($0.30) + 2 tbsp peanut butter ($0.40)
+- **Boiled eggs** (3) made ahead ($0.75)
+- *~650 cal, 25g protein*
+
+### Mid-Morning Snack (~10am)
+- **Handful of peanuts/mixed nuts** ($0.60)
+- **Banana** ($0.30)
+- *~280 cal, 10g protein*
+
+### Lunch (~1pm)
+- **Canned chickpeas or beans** (2 cans) ($1.50) + rice ($0.50)
+- **Onion, garlic, tomato** cooked on stovetop ($1.00)
+- **Cucumber, tomato salad** ($0.80)
+- *~750 cal, 25g protein*
+
+### Pre/Post-Training (~3-4pm)
+- **Sweet potato** (microwaved or boiled) ($0.40)
+- **Peanut butter** ($0.30)
+- *~300 cal, 10g protein*
+
+### Dinner (~7pm)
+- **Lentils** ($0.60) + rice ($0.50)
+- **Cooked vegetables** (cabbage, carrot) ($1.00)
+- **Oil for cooking** ($0.30)
+- *~550 cal, 20g protein*
+
+---
+
+## Budget Breakdown
+| Category | Cost |
+|----------|------|
+| Grains (oats, rice) | $2.00 |
+| Legumes (beans, lentils, chickpeas) | $3.00 |
+| Eggs | $1.50 |
+| Peanut butter/nuts | $1.50 |
+| Vegetables | $3.00 |
+| Fruits (bananas) | $1.50 |
+| Oil/seasonings | $1.00 |
+| **Total** | **~$14.00** |
+
+---
+
+## Key Tips
+✅ **Cooking method**: Stovetop, microwave, or boiling (no oven needed)
+✅ **Protein sources**: Eggs, legumes, peanut butter, nuts
+✅ **No refrigeration**: Buy fresh daily or use shelf-stable items
+✅ **Meal prep**: Cook rice/lentils in bulk at night for next day
+✅ **Hydration**: Drink lots of water (free)
+
+This plan prioritizes affordable protein and carbs for your training goals!</pre></td>
+                <td class="score-col"><span class="score score-medium">6</span></td>
+                <td class="reasoning">The solution successfully addresses all mandatory requirements with specific meals, portions, timing, caloric targets, macronutrient breakdown, budget compliance, and stovetop-only cooking methods. However, there are material concerns: (1) the refrigeration constraint is violated by including boiled eggs that require cooling for safe storage throughout the day, and (2) the protein macronutrient target appears undermet when meal estimates are summed (~90g vs. 120-140g target). These issues suggest the plan may not fully support the muscle-building goal or be practically executable under stated constraints. The solution is functional but has execution flaws that undermine its viability.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

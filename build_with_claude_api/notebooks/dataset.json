@@ -1,17 +1,81 @@
 [
   {
-    "task": "Create an IAM policy that allows read-only access to a specific S3 bucket named 'company-logs-2024' and all objects within it",
-    "format": "json",
-    "solution_criteria": "Policy must include s3:GetObject and s3:ListBucket actions, specify the correct bucket ARN in Resource field, and follow proper IAM policy JSON structure with Version and Statement elements"
+    "prompt_inputs": {
+      "height": "180 cm",
+      "weight": "68 kg",
+      "goal": "Marathon training - high-endurance athlete requiring 3500+ calories with carbohydrate loading and strategic hydration",
+      "restrictions": "None"
+    },
+    "solution_criteria": [
+      "Meal plan totals 3500+ calories distributed across breakfast, lunch, dinner, and snacks",
+      "Carbohydrates comprise 55-65% of total calories with emphasis on complex carbs for sustained energy",
+      "Hydration timing specified around training/meals with clear fluid intake recommendations",
+      "Plan is compact and presented in a single-day format with meal times"
+    ],
+    "task_description": "Write a compac, concise 1 day meal plan for single athlete",
+    "scenario": "Testing with a high-endurance athlete (marathon runner) requiring 3500+ calories with emphasis on carbohydrate loading and hydration timing"
   },
   {
-    "task": "Write a Python function that takes a list of EC2 instance dictionaries (with 'InstanceId' and 'State' keys) and returns only the instance IDs of instances in 'running' state",
-    "format": "python",
-    "solution_criteria": "Function should filter instances by State=='running', extract InstanceId values, return a list of strings, and handle empty input gracefully"
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "82 kg",
+      "goal": "Maximize strength and muscle gain for weightlifting competition in 8 weeks",
+      "restrictions": "Lactose intolerant, no shellfish"
+    },
+    "solution_criteria": [
+      "Meal plan covers one full day with breakfast, lunch, dinner, and pre/post-workout meals",
+      "Each meal specifies protein content with minimum 25g protein per main meal and 15-20g for snacks",
+      "Includes pre-workout meal (1-2 hours before training) and post-workout meal (within 30 minutes after) with appropriate macros",
+      "All meals respect dietary restrictions (no dairy, no shellfish)"
+    ],
+    "task_description": "Write a compac, concise 1 day meal plan for single athlete",
+    "scenario": "Testing with a strength/power athlete (weightlifter) needing protein-focused meals with specific pre/post-workout nutrition around training schedule"
   },
   {
-    "task": "Write a regular expression that validates AWS ARN format for S3 buckets (e.g., arn:aws:s3:::bucket-name or arn:aws:s3:::bucket-name/key)",
-    "format": "regex",
-    "solution_criteria": "Regex must match the pattern 'arn:aws:s3:::' followed by a valid bucket name (lowercase, numbers, hyphens), optionally followed by '/' and object key path, and reject invalid characters or formats"
+    "prompt_inputs": {
+      "height": "168",
+      "weight": "62",
+      "goal": "High-performance training for competitive gymnastics",
+      "restrictions": "Vegan (no animal products)"
+    },
+    "solution_criteria": [
+      "Meal plan is compact and covers one full day with 3+ meals",
+      "All foods are vegan-compliant with no animal products",
+      "Includes adequate protein (minimum 1.6g per kg body weight) for athletic recovery",
+      "Provides balanced macronutrients supporting gymnastics performance and energy demands"
+    ],
+    "task_description": "Write a compac, concise 1 day meal plan for single athlete",
+    "scenario": "Testing with a sport-specific dietary restriction (vegan gymnast) to verify meal plan accommodates both athletic performance needs and ethical constraints"
+  },
+  {
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "75 kg",
+      "goal": "Peak performance for 6 AM swimming competition with energy management across limited timeframe",
+      "restrictions": "Lactose intolerant"
+    },
+    "solution_criteria": [
+      "Meal plan includes breakfast (3+ hours before 6 AM competition), pre-competition snack (30-60 min before), and post-competition recovery meal",
+      "All meals and snacks are lactose-free and appropriate for athletic performance",
+      "Plan is compact and fits within a single day with realistic timing constraints for early morning competition"
+    ],
+    "task_description": "Write a compac, concise 1 day meal plan for single athlete",
+    "scenario": "Testing with an early morning competition scenario (6 AM start time) requiring breakfast timing, pre-competition nutrition, and recovery meals condensed into available hours"
+  },
+  {
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "72 kg",
+      "goal": "Build muscle and improve endurance for mixed sport training",
+      "restrictions": "No oven access, no refrigerator, budget under $15 USD for the day, vegetarian"
+    },
+    "solution_criteria": [
+      "All meals use only stovetop or no-cook preparation methods",
+      "Total daily cost does not exceed $15 USD",
+      "Provides adequate protein and calories for athlete's muscle-building goal",
+      "All foods are shelf-stable or require minimal refrigeration"
+    ],
+    "task_description": "Write a compac, concise 1 day meal plan for single athlete",
+    "scenario": "Testing with minimal equipment/budget constraints (athlete with limited kitchen access or financial resources) to ensure practicality and achievability of recommendations"
   }
 ]
